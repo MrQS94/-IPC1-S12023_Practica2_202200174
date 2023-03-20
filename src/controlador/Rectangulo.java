@@ -16,7 +16,6 @@ public class Rectangulo {
     public Rectangulo(Graphics g, int x, int y, Color color) {
         g.setColor(color);
         g.fillRect(x, y, 40, 45);
-        //g.setColor(Color.BLACK);
     }
 
 }

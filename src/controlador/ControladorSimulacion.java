@@ -21,18 +21,24 @@ public class ControladorSimulacion implements ActionListener {
     Simulacion simulacion;
     List<ModeloSimulacion> list;
     ModeloSimulacion[] mod = new ModeloSimulacion[30];
-    private int minutos;
-    private int segundos;
+    private int minutos, segundos;
     private Timer timer;
     JPanel panel;
 
-    public ControladorSimulacion(Simulacion simulacion, List<ModeloSimulacion> list) {
+    private int inventario, produccion, empaquetado, salida;
+
+    public ControladorSimulacion(Simulacion simulacion, List<ModeloSimulacion> list,
+            int inventario, int produccion, int empaquetado, int salida) {
         this.simulacion = simulacion;
         this.list = list;
-        this.simulacion.show();
-        Hilo();
+        this.simulacion.show();  
         timer = new Timer(1000, this);
         timer.start();
+        this.inventario = inventario;
+        this.produccion = produccion;
+        this.empaquetado = empaquetado;
+        this.salida = salida;
+        Hilo();
     }
 
     private void Cronometro() {
@@ -47,10 +53,8 @@ public class ControladorSimulacion implements ActionListener {
     }
 
     private void Hilo() {
-        MiHilo miHilo1 = new MiHilo(list, simulacion);
+        MiHilo miHilo1 = new MiHilo(list, simulacion, inventario, produccion, empaquetado, salida);
         miHilo1.start();
-       /* MiHilo miHilo2 = new MiHilo(list, simulacion);
-        miHilo2.run("3");*/
     }
 
     private void ActualizarTiempo() {

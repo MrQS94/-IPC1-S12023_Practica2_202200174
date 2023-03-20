@@ -21,9 +21,15 @@ public class MiHilo extends Thread {
     List<ModeloSimulacion> list;
     Simulacion simulacion;
 
-    public MiHilo(List<ModeloSimulacion> list, Simulacion simulacion) {
+    private int inventario, produccion, empaquetado, salida;
+
+    public MiHilo(List<ModeloSimulacion> list, Simulacion simulacion, int inventario, int produccion, int empaquetado, int salida) {
         this.list = list;
         this.simulacion = simulacion;
+        this.inventario = inventario;
+        this.produccion = produccion;
+        this.empaquetado = empaquetado;
+        this.salida = salida;
     }
 
     public void run() {
@@ -105,7 +111,7 @@ public class MiHilo extends Thread {
             }
 
             contadorInventario++;
-            if (contadorInventario <= 2) { // Aca cambiar el limite de las pelotitas
+            if (contadorInventario <= (inventario / 1000)) { // Aca cambiar el limite de las pelotitas
                 posicionXInventario += 40;
                 contadorNombreInventario--;
                 simulacion.jLabelInventario.setText("" + contadorInventario);
@@ -130,7 +136,7 @@ public class MiHilo extends Thread {
                     }
 
                     contadorProduccion++;
-                    if (contadorProduccion <= 3) { // Aca cambiar el limite de las pelotitas
+                    if (contadorProduccion <= (produccion / 1000)) { // Aca cambiar el limite de las pelotitas
                         posicionXProduccion += 40;
                         contadorNombreProduccion--;
                         simulacion.jLabelProduccion.setText("" + contadorProduccion);
@@ -155,7 +161,7 @@ public class MiHilo extends Thread {
                             }
 
                             contadorEmpaquetado++;
-                            if (contadorEmpaquetado <= 2) { // Aca cambiar el limite de las pelotitas
+                            if (contadorEmpaquetado <= (empaquetado / 1000)) { // Aca cambiar el limite de las pelotitas
                                 posicionXEmpaquetado += 40;
                                 contadorNombreEmpaquetado--;
                                 simulacion.jLabelEmpaquetado.setText("" + contadorEmpaquetado);
@@ -180,7 +186,7 @@ public class MiHilo extends Thread {
                                     }
 
                                     contadorSalida++;
-                                    if (contadorSalida <= 2) { // Aca cambiar el limite de las pelotitas
+                                    if (contadorSalida <= (salida / 1000)) { // Aca cambiar el limite de las pelotitas
                                         posicionXSalida += 40;
                                         contadorNombreSalida--;
                                         simulacion.jLabelSalida.setText("" + contadorSalida);
@@ -201,20 +207,16 @@ public class MiHilo extends Thread {
                         }
                     }
                 }
-
             }
-
             try {
                 Thread.sleep(1000);
             } catch (InterruptedException e) {
                 Logger.getLogger(MiHilo.class.getName()).log(Level.SEVERE, null, e);
             }
         }
-
     }
 }
-/*
-                        
+/*             
                         Hace falta implementar los demás sectores al igual de ver 
                         la función y añadir los límites necesarios que el usuario 
                         desee, hola pensar en una alternativa diferente a rey list 

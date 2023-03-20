@@ -90,7 +90,8 @@ public class ControladorMenu implements ActionListener, KeyListener {
 
         menu.dispose();
         Simulacion simulacion = new Simulacion();
-        ControladorSimulacion control = new ControladorSimulacion(simulacion, list);
+        ControladorSimulacion control = new ControladorSimulacion(simulacion, list, inventarioTiempo,
+                produccionTiempo, empaquetadoTiempo, salidaTiempo);
     }
 
     @Override
