@@ -144,7 +144,6 @@ public class MenuInicial extends javax.swing.JFrame {
         );
 
         jButtonSimulacion.setText("INICIAR SIMULACIÓN");
-        jButtonSimulacion.setEnabled(false);
 
         jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);

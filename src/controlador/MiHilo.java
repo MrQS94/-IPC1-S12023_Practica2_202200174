@@ -5,13 +5,9 @@
 package controlador;
 
 import java.awt.Color;
-import java.awt.Component;
-import java.awt.Container;
-import java.awt.Dimension;
-import java.awt.Graphics;
 import java.util.List;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import modelo.ModeloSimulacion;
 import vista.Simulacion;
@@ -31,53 +27,103 @@ public class MiHilo extends Thread {
     }
 
     public void run() {
-        int posicionX = -80;
-        int posicionY = 15;
-        int posicionXhide = 0;
-        int posicionYhide = 0;
-        //Bolitas bolitasInventario[] = new Bolitas[31];
-        Bolitas bolitasProduccion[] = new Bolitas[31];
-        Bolitas bolitasEmpaquetado[] = new Bolitas[31];
-        Bolitas bolitasSalida[] = new Bolitas[31];
+        // Posiciones en Inventario
+        int posicionXInventario = -80;
+        int posicionYInventario = 15;
+
+        // Posicion en Inventario escondidas
+        int posicionXhideInventario = -40;
+        int posicionYhideInventario = 0;
+
+        //Contador Inventario
+        int contadorNombreInventario = 30; // Esto se podria quitar
+        int contadorInventario = -1;
+        //---------------- PRODUCCION ----------------------
+        // Posiciones en Produccion
+        int posicionXProduccion = -40;
+        int posicionYProduccion = 15;
+
+        // Posicion en Produccion escondidas
+        int posicionXhideProduccion = -40;
+        int posicionYhideProduccion = 0;
+
+        //Contador Produccion
+        int contadorNombreProduccion = 30; // Esto se podria quitar
+        int contadorProduccion = 0;
 
         Bolitas bolitasInventario;
+        Bolitas bolitasProduccion;
 
-        for (int i = 0; i < 31; i++) {
-            Color colorProduccionBolitas = new Color(84, 196, 94);
+        while (true) {
             Color colorInventarioBolitas = new Color(16, 113, 229);
+            Color colorProduccionBolitas = new Color(84, 196, 94);
             Color colorEmpaquetadoBolitas = new Color(224, 143, 255);
             Color colorSalidaBolitas = new Color(255, 143, 143);
 
             Color colorInventarioEsconder = new Color(153, 210, 242);
+            Color colorProduccionEsconder = new Color(191, 249, 191);
 
-            posicionX += 40;
-            if (posicionX >= 250) {
-                posicionY += 40;
-                posicionX = 0;
+            //INVENTARIO
+            if (posicionXInventario >= 250) {
+                posicionYInventario += 40;
+                posicionXInventario = 0;
+            } else if (posicionXhideInventario >= 250) {
+                posicionXhideInventario = 0;
+                posicionYhideInventario += 40;
             }
 
-            if (i <= 5) { //i <= 2
-                simulacion.jLabelInventario.setText("" + i);
+            contadorInventario++;
+            if (contadorInventario <= 3) {
+                posicionXInventario += 40;
+                contadorNombreInventario--;
+                simulacion.jLabelInventario.setText("" + contadorInventario);
                 bolitasInventario = new Bolitas(simulacion.jPanelInventario.getGraphics(),
-                        posicionX, posicionY, "Hilo " + i, colorInventarioBolitas);
+                        posicionXInventario, posicionYInventario, "Hilo " + contadorNombreInventario, colorInventarioBolitas);
             } else {
-                Rectangulo rect = new Rectangulo(simulacion.jPanelInventario.getGraphics(),
-                        posicionXhide, posicionYhide, colorInventarioEsconder);
-                posicionXhide += 40;
-                posicionYhide += 0;
+                contadorInventario -= 2;
+                if (contadorInventario >= 0) {
+                    posicionXhideInventario += 40;
+                    posicionYhideInventario += 0;
+                    Rectangulo rect = new Rectangulo(simulacion.jPanelInventario.getGraphics(),
+                            posicionXhideInventario, posicionYhideInventario, colorInventarioEsconder);
+                    simulacion.jLabelInventario.setText("" + contadorInventario);
+
+                    // PRODUCCION
+                    if (posicionXProduccion >= 250) {
+                        posicionYProduccion += 40;
+                        posicionXProduccion = 0;
+                    } else if (posicionXhideProduccion >= 250) {
+                        posicionXhideProduccion = 0;
+                        posicionYhideProduccion += 40;
+                    }
+
+                    contadorProduccion++;
+                    if (contadorProduccion <= 3) {
+                        posicionXProduccion += 40;
+                        contadorNombreProduccion--;
+                        simulacion.jLabelProduccion.setText("" + contadorProduccion);
+                        bolitasProduccion = new Bolitas(simulacion.jPanelProduccion.getGraphics(),
+                                posicionXProduccion, posicionYProduccion, "Hilo " + contadorNombreProduccion, colorProduccionBolitas);
+                    } else {
+                        contadorProduccion -= 2;
+                        if (contadorProduccion >= 0) {
+                            posicionXhideProduccion += 40;
+                            posicionYhideProduccion += 0;
+                            Rectangulo rect2 = new Rectangulo(simulacion.jPanelProduccion.getGraphics(),
+                                    posicionXhideProduccion, posicionYhideProduccion, colorProduccionEsconder);
+                            simulacion.jLabelProduccion.setText("" + contadorProduccion);
+                        }
+                    }
+                }
+
             }
 
             try {
                 Thread.sleep(1000);
             } catch (InterruptedException e) {
-
+                Logger.getLogger(MiHilo.class.getName()).log(Level.SEVERE, null, e);
             }
         }
 
     }
-
-}/*
-bolitasProduccion[i] = new Bolitas(simulacion.jPanelProduccion.getGraphics(), posicionX, posicionY, "Hilo " + i, colorProduccion);
-            bolitasEmpaquetado[i] = new Bolitas(simulacion.jPanelEmpaquetado.getGraphics(), posicionX, posicionY, "Hilo " + i, colorEmpaquetado);
-            bolitasSalida[i] = new Bolitas(simulacion.jPanelSalida.getGraphics(), posicionX, posicionY, "Hilo " + i, colorSalida);
- */
+}

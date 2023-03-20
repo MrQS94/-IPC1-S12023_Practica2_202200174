@@ -47,8 +47,10 @@ public class ControladorSimulacion implements ActionListener {
     }
 
     private void Hilo() {
-        MiHilo miHilo = new MiHilo(list, simulacion);
-        miHilo.start();
+        MiHilo miHilo1 = new MiHilo(list, simulacion);
+        miHilo1.start();
+       /* MiHilo miHilo2 = new MiHilo(list, simulacion);
+        miHilo2.run("3");*/
     }
 
     private void ActualizarTiempo() {

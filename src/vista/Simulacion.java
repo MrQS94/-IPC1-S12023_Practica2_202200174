@@ -269,7 +269,7 @@ public class Simulacion extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabelEmpaquetado;
     public javax.swing.JLabel jLabelInventario;
-    private javax.swing.JLabel jLabelProduccion;
+    public javax.swing.JLabel jLabelProduccion;
     private javax.swing.JLabel jLabelSalida;
     public javax.swing.JLabel jLabelTimer;
     private javax.swing.JPanel jPanel1;
