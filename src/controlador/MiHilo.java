@@ -120,8 +120,6 @@ public class MiHilo extends Thread {
                         como por ejemplo un int setter y guetters, hoy verificar 
                         en el reporte si es necesario algún tipo de producción 
                         total con lo que hayamos hecho
-                        
-                        
                         */
                     }
                 }
