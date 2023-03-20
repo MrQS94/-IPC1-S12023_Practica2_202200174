@@ -64,7 +64,7 @@ public class MenuInicial extends javax.swing.JFrame {
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel4.setText("SALIDA");
 
-        jTextFieldInventarioTiempo.setText("1");
+        jTextFieldInventarioTiempo.setText("2");
 
         jTextFieldIntentarioCosto.setText("2");
 
@@ -74,7 +74,7 @@ public class MenuInicial extends javax.swing.JFrame {
         jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel6.setText("COSTO (Q/s)");
 
-        jTextFieldProduccionTiempo.setText("32");
+        jTextFieldProduccionTiempo.setText("2");
 
         jTextFieldEmpaquetadoTiempo.setText("3");
 

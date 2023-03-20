@@ -8,6 +8,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
 import modelo.ModeloSimulacion;
@@ -25,6 +26,7 @@ public class ControladorMenu implements ActionListener, KeyListener {
 
     public ControladorMenu(MenuInicial menu, List<ModeloSimulacion> list) {
         this.menu = menu;
+        list = new ArrayList();
         this.list = list;
         this.menu.jTextFieldInventarioTiempo.addKeyListener(this);
         this.menu.jTextFieldIntentarioCosto.addKeyListener(this);
@@ -73,17 +75,19 @@ public class ControladorMenu implements ActionListener, KeyListener {
         int salidaCosto = Integer.parseInt(menu.jTextFieldSalidaCosto.getText());
 
         inventarioTiempo *= 1000;
-        inventarioCosto *= 1000;
         produccionTiempo *= 1000;
-        produccionCosto *= 1000;
         empaquetadoTiempo *= 1000;
-        empaquetadoCosto *= 1000;
         salidaTiempo *= 1000;
-        salidaCosto *= 1000;
 
-        ModeloSimulacion mod = new ModeloSimulacion(inventarioTiempo, inventarioCosto, produccionTiempo,
-                produccionCosto, empaquetadoTiempo, empaquetadoCosto, salidaTiempo, salidaCosto);
-        list.add(mod);
+        ModeloSimulacion modInventario = new ModeloSimulacion(inventarioTiempo, inventarioCosto);
+        ModeloSimulacion modProduccion = new ModeloSimulacion(produccionTiempo, produccionCosto);
+        ModeloSimulacion modEmpaquetado = new ModeloSimulacion(empaquetadoTiempo, empaquetadoCosto);
+        ModeloSimulacion modSalida = new ModeloSimulacion(salidaTiempo, salidaCosto);
+
+        list.add(modInventario);
+        list.add(modProduccion);
+        list.add(modEmpaquetado);
+        list.add(modSalida);
 
         JOptionPane.showMessageDialog(null, "Los datos han sido guardados correctamente.", "INFORMATION!!", JOptionPane.INFORMATION_MESSAGE);
         VaciarJText();

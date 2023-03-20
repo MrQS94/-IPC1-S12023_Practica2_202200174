@@ -25,5 +25,5 @@ public class Main {
         List<ModeloSimulacion> list = new ArrayList();
         ControladorMenu control = new ControladorMenu(menu, list);
     }
-    
+
 }
