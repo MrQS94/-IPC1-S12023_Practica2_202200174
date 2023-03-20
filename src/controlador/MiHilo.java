@@ -27,6 +27,7 @@ public class MiHilo extends Thread {
     }
 
     public void run() {
+        //---------------- INVENTARIO ----------------------
         // Posiciones en Inventario
         int posicionXInventario = -80;
         int posicionYInventario = 15;
@@ -38,6 +39,7 @@ public class MiHilo extends Thread {
         //Contador Inventario
         int contadorNombreInventario = 30; // Esto se podria quitar
         int contadorInventario = -1;
+
         //---------------- PRODUCCION ----------------------
         // Posiciones en Produccion
         int posicionXProduccion = -40;
@@ -51,8 +53,36 @@ public class MiHilo extends Thread {
         int contadorNombreProduccion = 30; // Esto se podria quitar
         int contadorProduccion = 0;
 
+        //---------------- EMPAQUETADO ----------------------
+        // Posiciones en Produccion
+        int posicionXEmpaquetado = -40;
+        int posicionYEmpaquetado = 15;
+
+        // Posicion en Produccion escondidas
+        int posicionXhideEmpaquetado = -40;
+        int posicionYhideEmpaquetado = 0;
+
+        //Contador Produccion
+        int contadorNombreEmpaquetado = 30; // Esto se podria quitar
+        int contadorEmpaquetado = 0;
+
+        //---------------- SALIDA ----------------------
+        // Posiciones en Produccion
+        int posicionXSalida = -40;
+        int posicionYSalida = 15;
+
+        // Posicion en Produccion escondidas
+        int posicionXhideSalida = -40;
+        int posicionYhideSalida = 0;
+
+        //Contador Produccion
+        int contadorNombreSalida = 30; // Esto se podria quitar
+        int contadorSalida = 0;
+
         Bolitas bolitasInventario;
         Bolitas bolitasProduccion;
+        Bolitas bolitasEmpaquetado;
+        Bolitas bolitasSalida;
 
         while (true) {
             Color colorInventarioBolitas = new Color(16, 113, 229);
@@ -62,6 +92,8 @@ public class MiHilo extends Thread {
 
             Color colorInventarioEsconder = new Color(153, 210, 242);
             Color colorProduccionEsconder = new Color(191, 249, 191);
+            Color colorEmpaquetadoEsconder = new Color(244, 217, 255);
+            Color colorSalidaEsconder = new Color(255, 217, 217);
 
             //INVENTARIO
             if (posicionXInventario >= 250) {
@@ -73,7 +105,7 @@ public class MiHilo extends Thread {
             }
 
             contadorInventario++;
-            if (contadorInventario <= 3) {
+            if (contadorInventario <= 2) { // Aca cambiar el limite de las pelotitas
                 posicionXInventario += 40;
                 contadorNombreInventario--;
                 simulacion.jLabelInventario.setText("" + contadorInventario);
@@ -98,7 +130,7 @@ public class MiHilo extends Thread {
                     }
 
                     contadorProduccion++;
-                    if (contadorProduccion <= 3) {
+                    if (contadorProduccion <= 3) { // Aca cambiar el limite de las pelotitas
                         posicionXProduccion += 40;
                         contadorNombreProduccion--;
                         simulacion.jLabelProduccion.setText("" + contadorProduccion);
@@ -112,15 +144,61 @@ public class MiHilo extends Thread {
                             Rectangulo rect2 = new Rectangulo(simulacion.jPanelProduccion.getGraphics(),
                                     posicionXhideProduccion, posicionYhideProduccion, colorProduccionEsconder);
                             simulacion.jLabelProduccion.setText("" + contadorProduccion);
-                        } /*
-                        
-                        Hace falta implementar los demás sectores al igual de ver 
-                        la función y añadir los límites necesarios que el usuario 
-                        desee, hola pensar en una alternativa diferente a rey list 
-                        como por ejemplo un int setter y guetters, hoy verificar 
-                        en el reporte si es necesario algún tipo de producción 
-                        total con lo que hayamos hecho
-                        */
+
+                            // EMPAQUETADO
+                            if (posicionXEmpaquetado >= 250) {
+                                posicionYEmpaquetado += 40;
+                                posicionXEmpaquetado = 0;
+                            } else if (posicionXhideEmpaquetado >= 250) {
+                                posicionXhideEmpaquetado = 0;
+                                posicionYhideEmpaquetado += 40;
+                            }
+
+                            contadorEmpaquetado++;
+                            if (contadorEmpaquetado <= 2) { // Aca cambiar el limite de las pelotitas
+                                posicionXEmpaquetado += 40;
+                                contadorNombreEmpaquetado--;
+                                simulacion.jLabelEmpaquetado.setText("" + contadorEmpaquetado);
+                                bolitasEmpaquetado = new Bolitas(simulacion.jPanelEmpaquetado.getGraphics(),
+                                        posicionXEmpaquetado, posicionYEmpaquetado, "Hilo " + contadorNombreEmpaquetado, colorEmpaquetadoBolitas);
+                            } else {
+                                contadorEmpaquetado -= 2;
+                                if (contadorEmpaquetado >= 0) {
+                                    posicionXhideEmpaquetado += 40;
+                                    posicionYhideEmpaquetado += 0;
+                                    Rectangulo rect3 = new Rectangulo(simulacion.jPanelEmpaquetado.getGraphics(),
+                                            posicionXhideEmpaquetado, posicionYhideEmpaquetado, colorEmpaquetadoEsconder);
+                                    simulacion.jLabelEmpaquetado.setText("" + contadorEmpaquetado);
+
+                                    // SALIDA
+                                    if (posicionXSalida >= 250) {
+                                        posicionYSalida += 40;
+                                        posicionXSalida = 0;
+                                    } else if (posicionXhideSalida >= 250) {
+                                        posicionXhideSalida = 0;
+                                        posicionYhideSalida += 40;
+                                    }
+
+                                    contadorSalida++;
+                                    if (contadorSalida <= 2) { // Aca cambiar el limite de las pelotitas
+                                        posicionXSalida += 40;
+                                        contadorNombreSalida--;
+                                        simulacion.jLabelSalida.setText("" + contadorSalida);
+                                        bolitasSalida = new Bolitas(simulacion.jPanelSalida.getGraphics(),
+                                                posicionXSalida, posicionYSalida, "Hilo " + contadorNombreSalida, colorSalidaBolitas);
+                                    } else {
+                                        contadorSalida -= 2;
+                                        if (contadorSalida >= 0) {
+                                            posicionXhideSalida += 40;
+                                            posicionYhideSalida += 0;
+                                            Rectangulo rect4 = new Rectangulo(simulacion.jPanelSalida.getGraphics(),
+                                                    posicionXhideSalida, posicionYhideSalida, colorSalidaEsconder);
+                                            simulacion.jLabelSalida.setText("" + contadorSalida);
+                                        }
+                                    }
+                                }
+                            }
+                        }
                     }
                 }
 
@@ -135,3 +213,12 @@ public class MiHilo extends Thread {
 
     }
 }
+/*
+                        
+                        Hace falta implementar los demás sectores al igual de ver 
+                        la función y añadir los límites necesarios que el usuario 
+                        desee, hola pensar en una alternativa diferente a rey list 
+                        como por ejemplo un int setter y getters, hoy verificar 
+                        en el reporte si es necesario algún tipo de producción 
+                        total con lo que hayamos hecho
+ */
