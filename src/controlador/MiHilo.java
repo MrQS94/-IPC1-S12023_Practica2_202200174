@@ -112,7 +112,17 @@ public class MiHilo extends Thread {
                             Rectangulo rect2 = new Rectangulo(simulacion.jPanelProduccion.getGraphics(),
                                     posicionXhideProduccion, posicionYhideProduccion, colorProduccionEsconder);
                             simulacion.jLabelProduccion.setText("" + contadorProduccion);
-                        }
+                        } /*
+                        
+                        Hace falta implementar los demás sectores al igual de ver 
+                        la función y añadir los límites necesarios que el usuario 
+                        desee, hola pensar en una alternativa diferente a rey list 
+                        como por ejemplo un int setter y guetters, hoy verificar 
+                        en el reporte si es necesario algún tipo de producción 
+                        total con lo que hayamos hecho
+                        
+                        
+                        */
                     }
                 }
 
