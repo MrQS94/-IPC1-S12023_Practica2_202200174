@@ -115,7 +115,7 @@ public class MiHilo extends Thread {
                 posicionXhideInventario = 0;
                 posicionYhideInventario += 40;
             }
-
+            
             contadorInventario++;
             if (contadorInventario <= (inventario / 1000)) { // Aca cambiar el limite de las pelotitas
                 if (contadorNombreInventario > 0) {
@@ -123,7 +123,7 @@ public class MiHilo extends Thread {
                     contadorNombreInventario--;
                     simulacion.jLabelInventario.setText("" + contadorInventario);
                     bolitasInventario = new Bolitas(simulacion.jPanelInventario.getGraphics(),
-                            posicionXInventario, posicionYInventario, "Hilo " + contadorNombreInventario, colorInventarioBolitas);
+                            posicionXInventario, posicionYInventario, colorInventarioBolitas);
                     simulacion.jPanelInicial.repaint();
                     simulacion.jLabelInicial.setText(String.valueOf(contadorNombreInventario));
                 }
@@ -136,7 +136,7 @@ public class MiHilo extends Thread {
                             posicionXhideInventario, posicionYhideInventario, colorInventarioEsconder);
                     simulacion.jLabelInventario.setText("" + contadorInventario);
                     bolitasEntrada = new Bolitas(simulacion.jPanelInicial.getGraphics(),
-                            65, 65, "Inicial", Color.WHITE);
+                            65, 65, Color.WHITE);
 
                     // PRODUCCION
                     if (posicionXProduccion >= 250) {
@@ -154,7 +154,7 @@ public class MiHilo extends Thread {
                             contadorNombreProduccion--;
                             simulacion.jLabelProduccion.setText("" + contadorProduccion);
                             bolitasProduccion = new Bolitas(simulacion.jPanelProduccion.getGraphics(),
-                                    posicionXProduccion, posicionYProduccion, "Hilo " + contadorNombreProduccion, colorProduccionBolitas);
+                                    posicionXProduccion, posicionYProduccion, colorProduccionBolitas);
                         }
                     } else {
                         contadorProduccion -= 2;
@@ -181,7 +181,7 @@ public class MiHilo extends Thread {
                                     contadorNombreEmpaquetado--;
                                     simulacion.jLabelEmpaquetado.setText("" + contadorEmpaquetado);
                                     bolitasEmpaquetado = new Bolitas(simulacion.jPanelEmpaquetado.getGraphics(),
-                                            posicionXEmpaquetado, posicionYEmpaquetado, "Hilo " + contadorNombreEmpaquetado, colorEmpaquetadoBolitas);
+                                            posicionXEmpaquetado, posicionYEmpaquetado, colorEmpaquetadoBolitas);
                                 }
                             } else {
                                 contadorEmpaquetado -= 2;
@@ -208,7 +208,7 @@ public class MiHilo extends Thread {
                                             contadorNombreSalida--;
                                             simulacion.jLabelSalida.setText("" + contadorSalida);
                                             bolitasSalida = new Bolitas(simulacion.jPanelSalida.getGraphics(),
-                                                    posicionXSalida, posicionYSalida, "Hilo " + contadorNombreSalida, colorSalidaBolitas);
+                                                    posicionXSalida, posicionYSalida, colorSalidaBolitas);
                                             simulacion.jPanelFinal.repaint();
                                         }
                                     } else {
@@ -221,12 +221,11 @@ public class MiHilo extends Thread {
                                                     posicionXhideSalida, posicionYhideSalida, colorSalidaEsconder);
                                             simulacion.jLabelSalida.setText("" + contadorSalida);
                                             bolitasEntrada = new Bolitas(simulacion.jPanelFinal.getGraphics(),
-                                                    65, 65, "Final", Color.WHITE);
+                                                    65, 65, Color.WHITE);
                                             contadorFinal++;
                                             if (contadorFinal <= 30) {
                                                 simulacion.jLabelFinal.setText(String.valueOf(contadorFinal));
                                             } else {
-                                                System.out.println("Se acabo");
                                                 timer.stop();
                                                 break;
                                             }

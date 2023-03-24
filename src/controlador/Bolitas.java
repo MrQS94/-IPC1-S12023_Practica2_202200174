@@ -13,12 +13,11 @@ import java.awt.Graphics;
  */
 public class Bolitas {
 
-    public Bolitas(Graphics g, int x, int y, String nombre, Color color) {
+    public Bolitas(Graphics g, int x, int y, Color color) {
         g.setColor(color);
         g.fillOval(x, y, 25, 25);
         g.setColor(Color.BLACK);
         g.drawOval(x, y, 25, 25);
-        g.drawString(nombre, x, y);
     }
 
 }

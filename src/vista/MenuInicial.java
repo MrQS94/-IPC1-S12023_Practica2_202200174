@@ -64,27 +64,11 @@ public class MenuInicial extends javax.swing.JFrame {
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel4.setText("SALIDA");
 
-        jTextFieldInventarioTiempo.setText("2");
-
-        jTextFieldIntentarioCosto.setText("2");
-
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel5.setText("TIEMPO (s)");
 
         jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel6.setText("COSTO (Q/s)");
-
-        jTextFieldProduccionTiempo.setText("2");
-
-        jTextFieldEmpaquetadoTiempo.setText("3");
-
-        jTextFieldProduccionCosto.setText("3");
-
-        jTextFieldEmpaquetadoCosto.setText("3");
-
-        jTextFieldSalidaTiempo.setText("3");
-
-        jTextFieldSalidaCosto.setText("44");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -144,6 +128,7 @@ public class MenuInicial extends javax.swing.JFrame {
         );
 
         jButtonSimulacion.setText("INICIAR SIMULACIÓN");
+        jButtonSimulacion.setEnabled(false);
 
         jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);

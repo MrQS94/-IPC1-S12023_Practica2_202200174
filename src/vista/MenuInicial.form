@@ -164,17 +164,11 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="jTextFieldInventarioTiempo">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="2"/>
-          </Properties>
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
           </AuxValues>
         </Component>
         <Component class="javax.swing.JTextField" name="jTextFieldIntentarioCosto">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="2"/>
-          </Properties>
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
           </AuxValues>
@@ -192,49 +186,31 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="jTextFieldProduccionTiempo">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="2"/>
-          </Properties>
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
           </AuxValues>
         </Component>
         <Component class="javax.swing.JTextField" name="jTextFieldEmpaquetadoTiempo">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="3"/>
-          </Properties>
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
           </AuxValues>
         </Component>
         <Component class="javax.swing.JTextField" name="jTextFieldProduccionCosto">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="3"/>
-          </Properties>
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
           </AuxValues>
         </Component>
         <Component class="javax.swing.JTextField" name="jTextFieldEmpaquetadoCosto">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="3"/>
-          </Properties>
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
           </AuxValues>
         </Component>
         <Component class="javax.swing.JTextField" name="jTextFieldSalidaTiempo">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="3"/>
-          </Properties>
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
           </AuxValues>
         </Component>
         <Component class="javax.swing.JTextField" name="jTextFieldSalidaCosto">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="44"/>
-          </Properties>
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
           </AuxValues>
@@ -244,6 +220,7 @@
     <Component class="javax.swing.JButton" name="jButtonSimulacion">
       <Properties>
         <Property name="text" type="java.lang.String" value="INICIAR SIMULACI&#xd3;N"/>
+        <Property name="enabled" type="boolean" value="false"/>
       </Properties>
       <AuxValues>
         <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
