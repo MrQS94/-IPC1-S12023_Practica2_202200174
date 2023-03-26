@@ -5,12 +5,10 @@
 package controlador;
 
 import java.awt.Color;
-import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.Timer;
 
-import modelo.ModeloSimulacion;
 import vista.Simulacion;
 
 /**
